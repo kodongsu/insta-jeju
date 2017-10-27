@@ -1,15 +1,19 @@
-<h1>Posts Index</h1>
+<div class = "container">
+    <h1>Posts Index</h1>
 
-<a href='/posts/new'>New</a>
+<%= link_to("New", new_post_path) %>
 
-<div>
-<% @posts.each do |post| %>
+<div class="row">
+  <% @posts.each do |post| %>
 
-    <div>
-        <a href='<%=post.id %>'>
-            <%= post.content %>    
-        </a>
+    <div class="col-4">
+      <%= link_to(post) do %>
+        <%= image_tag(post.image.url, class:"img-fluid") %>
+      </a>
+      <% end %>
     </div>
-    
-<% end %>
+  
+  <% end %>
 </div>
+</div>
+  

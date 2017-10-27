@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  # RESTful
+  #get 'posts' => 'posts#index'
+  #get 'posts/new' => 'posts#new'
+  #get 'posts/:id' => 'posts#show'
+  #post 'posts' => 'posts#create'
+  #get 'posts/:id/edit' => 'posts#edit'
+  #put 'posts/:id' => 'posts#update'
+  #delete 'posts/:id' => 'posts#destroy'
   
-  get 'posts' => 'posts#index'
-  get 'posts/new' => 'posts#new'
-  get 'posts/:id' => 'posts#show'
-  post 'posts/:id' => 'posts#create'
-  get 'posts/:id/edit' => 'posts#edit'
-  put 'posts/:id' => 'posts#update'
+  root 'posts#index'
+  resources :posts
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

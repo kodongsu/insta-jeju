@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # RESTful
   #get 'posts' => 'posts#index'
   #get 'posts/new' => 'posts#new'
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   #delete 'posts/:id' => 'posts#destroy'
   
   root 'posts#index'
+  get 'mypage' => 'posts#mypage', as: :mypage #=> mypage_path
   resources :posts
   
   # The priority is based upon order of creation: first created -> highest priority.

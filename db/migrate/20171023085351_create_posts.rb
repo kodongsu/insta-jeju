@@ -5,6 +5,8 @@ class CreatePosts < ActiveRecord::Migration
       t.text :content
       t.text :image
       
+      t.references :user, index: true
+      
       t.timestamps null: false
     end
   end

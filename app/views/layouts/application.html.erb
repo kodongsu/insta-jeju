@@ -8,6 +8,15 @@
 </head>
 <body>
 
+  <nav>
+    <% if user_signed_in? %>
+    <%= current_user.email %> | <%= link_to "my page", mypage_path %> | <!--user가 로그인 되었을 경우에만 사용가능-->
+      <%= link_to :"log out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "log in", new_user_session_path %>
+    <% end %>
+  </nav>
+
 <%= yield %>
 
 </body>

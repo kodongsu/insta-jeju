@@ -22,24 +22,26 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
   
   def edit
     @post = Post.find(params[:id])
-    
     unless current_user == @post.user
       redirect_to root_path
     end
   end
   
   def update
-    unless current_user == @post.user
+    post = Post.find(params[:id])
+    
+    unless current_user == post.user
       redirect_to root_path
     else
-      post = Post.find(params[:id])
-      post.content = params[:content]
+      post.image = params[:post][:image]
+      post.content = params[:post][:content]
       post.save
-    
+      
       redirect_to post
     end
   end
@@ -51,12 +53,14 @@ class PostsController < ApplicationController
       redirect_to root_path
     else
       post.destroy
-    
+      
       redirect_to "/posts"
     end
+    
+  end
+  
+  def mypage
+    @posts = current_user.posts
   end
     
-  def mypage
-     @posts = current_user.posts
-  end
 end

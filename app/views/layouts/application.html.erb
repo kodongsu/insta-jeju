@@ -8,13 +8,21 @@
 </head>
 <body>
 
-  <nav>
-    <% if user_signed_in? %>
-    <%= current_user.email %> | <%= link_to "my page", mypage_path %> | <!--user가 로그인 되었을 경우에만 사용가능-->
-      <%= link_to :"log out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "log in", new_user_session_path %>
-    <% end %>
+  <nav class = "navbar navbar-default navbar-fixed-top">
+    <div class="container">
+    <h1><a class="navbar-brand" href="https://insta-jeju-kodongsu.c9users.io/">Insta Jeju</a></h1>
+        <% if user_signed_in? %>
+        <div class="form-group">
+        <strong><%= current_user.email %></strong> |
+        <%= link_to "my page", mypage_path %> | <!--user가 로그인 되었을 경우에만 사용가능-->
+          
+    <%= link_to :"log out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          
+    <%= link_to "log in", new_user_session_path %>
+        <% end %>
+        </div>
+    </div>
   </nav>
 
 <%= yield %>

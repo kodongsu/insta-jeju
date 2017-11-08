@@ -1,13 +1,15 @@
+ <div class="container">
+
 <% if current_user == @post.user %>
 <%= link_to("Edit", edit_post_path(@post)) %> | 
 <%= link_to("Delete", @post, method: :delete) %>
 <% end %>
 
 <div>
-    <%= image_tag(@post.image.url, class:"img-fluid") %>
+    <p class = "text-center"><%= image_tag(@post.image.url, class:"img-fluid") %></p>
     <p>
-        <%= @post.user.email %><br>
-        <%= @post.content %>
+        <p class="text-right"><strong><%= @post.user.email %></strong></p>
+        <p class="text-center"><%= @post.content %></p>
     </p>
 </div>
 
@@ -26,8 +28,10 @@
 <% if user_signed_in? %>
 <div>
   <%= form_for([@post, @comment]) do |f| %>
-    Comment: <%= f.text_field :content %>
-    <%= f.submit "Save" %>
+    Comment: <%= f.text_field :content,class:"form-control" %>
+    <p class = "text-right"><%= f.submit "Save", class:"btn btn-success" %></p>
   <% end %>
 </div>
 <% end %>
+
+</div>
